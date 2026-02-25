@@ -1,13 +1,5 @@
 # 🇮🇳 Indian Stock Market Dashboard
 
-A comprehensive, production-grade stock market analysis dashboard built with **Python** and **Streamlit**, featuring real-time data from **Alpha Vantage API**.
-
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.41-red?logo=streamlit)
-![License](https://img.shields.io/badge/License-MIT-green)
-
----
-
 ## 🚀 Features
 
 ### 📊 Data & Analysis
@@ -131,43 +123,6 @@ pytest tests/ -v
 5. **Export**: Download CSV, save to disk, or create timestamped archives
 6. **Schedule**: Set auto-update intervals for continuous monitoring
 
----
 
-## 🧪 Testing
 
-Run the full test suite:
-```bash
-pytest tests/ -v --tb=short
-```
 
-Run specific test files:
-```bash
-pytest tests/test_data_fetcher.py -v
-pytest tests/test_data_processor.py -v
-pytest tests/test_csv_handler.py -v
-```
-
----
-
-## 📝 Logging
-
-Logs are saved to `logs/dashboard_YYYY-MM-DD.log` with detailed formatting:
-```
-2024-01-15 10:30:00 | stock_dashboard | INFO     | data_fetcher.py:45 | Fetching daily data for RELIANCE.BSE
-2024-01-15 10:30:02 | stock_dashboard | INFO     | data_fetcher.py:82 | Successfully fetched 100 records for RELIANCE.BSE
-2024-01-15 10:30:05 | stock_dashboard | ERROR    | data_fetcher.py:90 | Request timeout while fetching data for TCS.BSE
-```
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
----
-
-## 🙏 Acknowledgments
-
-- [Alpha Vantage](https://www.alphavantage.co/) for the free stock market API
-- [Streamlit](https://streamlit.io/) for the amazing dashboard framework
-- [Plotly](https://plotly.com/) for interactive charting

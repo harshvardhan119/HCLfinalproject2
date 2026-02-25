@@ -471,6 +471,27 @@ if st.session_state.stock_data is not None:
             unsafe_allow_html=True,
         )
 
+    # ─── Company Overview Section ──────────────────────────────────────────
+    overview = fetcher.get_stock_overview(selected_symbol)
+    if overview:
+        if "Simulated mode" in overview.get("Description", ""):
+            st.warning("⚠️ **Notice:** Local data simulation mode active to ensure uninterrupted dashboard access.")
+        
+        with st.expander(f"🏢 Company Profile: {overview.get('Name', stock_name)}", expanded=True):
+            o_col1, o_col2 = st.columns([1, 2])
+            with o_col1:
+                st.markdown(f"**Sector:** {overview.get('Sector', 'N/A')}")
+                st.markdown(f"**Industry:** {overview.get('Industry', 'N/A')}")
+                st.markdown(f"**Exchange:** {overview.get('Exchange', 'N/A')}")
+                m_cap = overview.get('MarketCapitalization')
+                if isinstance(m_cap, (int, float)):
+                    st.markdown(f"**Market Cap:** ₹{m_cap:,.0f}")
+                else:
+                    st.markdown(f"**Market Cap:** {m_cap}")
+            with o_col2:
+                st.markdown(f"**Business Summary:**")
+                st.write(overview.get('Description', 'No description available.'))
+
     st.markdown("<br>", unsafe_allow_html=True)
 
     # ─── Charts ────────────────────────────────────────────────────────────

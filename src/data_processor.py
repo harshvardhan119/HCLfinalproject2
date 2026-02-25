@@ -150,8 +150,8 @@ class StockDataProcessor:
             "period_low": round(df["Low"].min(), 2),
             "avg_volume": int(df["Volume"].mean()),
             "total_records": len(df),
-            "date_range_start": str(df.index.min().date()),
-            "date_range_end": str(df.index.max().date()),
+            "date_range_start": str(pd.to_datetime(df.index.min()).date()),
+            "date_range_end": str(pd.to_datetime(df.index.max()).date()),
             "price_change": round(latest["Close"] - first["Close"], 2),
             "price_change_pct": round(
                 ((latest["Close"] - first["Close"]) / first["Close"]) * 100, 2

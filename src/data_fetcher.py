@@ -36,8 +36,8 @@ class StockDataFetcher:
             if df.index.name != "Date":
                 df.index.name = "Date"
             
-            # Reset index and convert to date-only to match expected format
-            df.index = pd.to_datetime(df.index).date
+            # Ensure index is DatetimeIndex and remove timezone info
+            df.index = pd.to_datetime(df.index).tz_localize(None)
             
             # Select essential columns
             cols_to_keep = ["Open", "High", "Low", "Close", "Volume"]
@@ -74,7 +74,10 @@ class StockDataFetcher:
                 logger.error(f"No intraday data found for {symbol}")
                 return None
 
-            # Standardize
+            # Standardize index
+            df.index = pd.to_datetime(df.index).tz_localize(None)
+            
+            # Standardize columns
             cols_to_keep = ["Open", "High", "Low", "Close", "Volume"]
             df = df[cols_to_keep]
             

@@ -253,7 +253,7 @@ st.markdown(
     """
     <div class="dashboard-header">
         <h1>📈 Indian Stock Market Dashboard</h1>
-        <p>Real-time stock analysis with moving averages, volume trends, and technical indicators — powered by Alpha Vantage</p>
+        <p>Real-time stock analysis with moving averages, volume trends, and technical indicators — powered by Yahoo Finance</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -378,7 +378,7 @@ if fetch_clicked:
             logger.info(f"Successfully fetched and saved data for {stock_name}")
         else:
             st.error(
-                "❌ Failed to fetch data. Check your API key or try again later. See logs for details."
+                "❌ Failed to fetch data. Please try again later. See logs for details."
             )
             logger.error(f"Failed to fetch data for {stock_name}")
 
@@ -971,7 +971,7 @@ st.markdown(
     """
     <div class="footer">
         <strong>NSE/BSE Indian Stock Market Dashboard</strong><br>
-        Data provided by <a href="https://www.alphavantage.co/" target="_blank" style="color: #667eea;">Alpha Vantage</a> 
+        Data provided by <a href="https://finance.yahoo.com/" target="_blank" style="color: #667eea;">Yahoo Finance</a> 
         | © 2024-2026
     </div>
     """,

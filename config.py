@@ -7,27 +7,23 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Alpha Vantage API Configuration
-ALPHA_VANTAGE_API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY", "demo")
-ALPHA_VANTAGE_BASE_URL = "https://www.alphavantage.co/query"
-
 # Popular Indian Stocks (NSE)
 INDIAN_STOCKS = {
-    "Reliance Industries": "RELIANCE.BSE",
-    "Tata Consultancy Services": "TCS.BSE",
-    "Infosys": "INFY.BSE",
-    "HDFC Bank": "HDFCBANK.BSE",
-    "ICICI Bank": "ICICIBANK.BSE",
-    "State Bank of India": "SBIN.BSE",
-    "Bharti Airtel": "BHARTIARTL.BSE",
-    "ITC Limited": "ITC.BSE",
-    "Kotak Mahindra Bank": "KOTAKBANK.BSE",
-    "Hindustan Unilever": "HINDUNILVR.BSE",
-    "Wipro": "WIPRO.BSE",
-    "Asian Paints": "ASIANPAINT.BSE",
-    "Maruti Suzuki": "MARUTI.BSE",
-    "Titan Company": "TITAN.BSE",
-    "Bajaj Finance": "BAJFINANCE.BSE",
+    "Reliance Industries": "RELIANCE.NS",
+    "Tata Consultancy Services": "TCS.NS",
+    "Infosys": "INFY.NS",
+    "HDFC Bank": "HDFCBANK.NS",
+    "ICICI Bank": "ICICIBANK.NS",
+    "State Bank of India": "SBIN.NS",
+    "Bharti Airtel": "BHARTIARTL.NS",
+    "ITC Limited": "ITC.NS",
+    "Kotak Mahindra Bank": "KOTAKBANK.NS",
+    "Hindustan Unilever": "HINDUNILVR.NS",
+    "Wipro": "WIPRO.NS",
+    "Asian Paints": "ASIANPAINT.NS",
+    "Maruti Suzuki": "MARUTI.NS",
+    "Titan Company": "TITAN.NS",
+    "Bajaj Finance": "BAJFINANCE.NS",
 }
 
 # Data Storage

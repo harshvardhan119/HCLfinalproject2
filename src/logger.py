@@ -1,7 +1,4 @@
-"""
-Logging configuration for the Indian Stock Market Dashboard.
-Provides structured logging with file and console handlers.
-"""
+"""Logging configuration."""
 
 import logging
 import os
@@ -11,15 +8,7 @@ from config import LOGS_DIR
 
 
 def setup_logger(name: str = "stock_dashboard") -> logging.Logger:
-    """
-    Set up and return a configured logger instance.
-
-    Args:
-        name: Name for the logger instance.
-
-    Returns:
-        Configured logging.Logger instance.
-    """
+    """Initialize and return a logger."""
     logger = logging.getLogger(name)
 
     # Avoid adding duplicate handlers

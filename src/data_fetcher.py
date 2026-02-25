@@ -1,7 +1,4 @@
-"""
-Data Fetcher module for the Indian Stock Market Dashboard.
-Handles all API interactions with Alpha Vantage.
-"""
+"""Stock market data fetching logic."""
 
 import requests
 import pandas as pd
@@ -12,7 +9,7 @@ from src.logger import logger
 
 
 class StockDataFetcher:
-    """Fetches stock market data from Alpha Vantage API."""
+    """NSE/BSE Data Fetcher"""
 
     def __init__(self, api_key: str = ALPHA_VANTAGE_API_KEY):
         self.api_key = api_key
@@ -22,16 +19,7 @@ class StockDataFetcher:
     def fetch_daily_stock_data(
         self, symbol: str, output_size: str = "compact"
     ) -> Optional[pd.DataFrame]:
-        """
-        Fetch daily stock data for a given symbol.
-
-        Args:
-            symbol: Stock symbol (e.g., 'RELIANCE.BSE')
-            output_size: 'compact' (last 100 days) or 'full' (20+ years)
-
-        Returns:
-            DataFrame with stock data or None if request fails.
-        """
+        """Fetch daily time series data."""
         params = {
             "function": "TIME_SERIES_DAILY",
             "symbol": symbol,
@@ -106,16 +94,7 @@ class StockDataFetcher:
     def fetch_intraday_data(
         self, symbol: str, interval: str = "5min"
     ) -> Optional[pd.DataFrame]:
-        """
-        Fetch intraday stock data for a given symbol.
-
-        Args:
-            symbol: Stock symbol (e.g., 'RELIANCE.BSE')
-            interval: Time interval ('1min', '5min', '15min', '30min', '60min')
-
-        Returns:
-            DataFrame with intraday data or None if request fails.
-        """
+        """Fetch intraday prices."""
         params = {
             "function": "TIME_SERIES_INTRADAY",
             "symbol": symbol,
@@ -183,15 +162,7 @@ class StockDataFetcher:
             return None
 
     def get_stock_overview(self, symbol: str) -> Optional[dict]:
-        """
-        Fetch company overview / fundamental data.
-
-        Args:
-            symbol: Stock symbol
-
-        Returns:
-            Dictionary with company overview data or None.
-        """
+        """Fetch company fundamentals."""
         params = {
             "function": "OVERVIEW",
             "symbol": symbol,

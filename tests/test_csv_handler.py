@@ -1,6 +1,4 @@
-"""
-Unit tests for the CSV Handler module.
-"""
+"""Tests for CSV handling."""
 
 import pytest
 import pandas as pd
@@ -49,7 +47,6 @@ def sample_df():
 
 
 class TestCSVHandler:
-    """Tests for the CSVHandler class."""
 
     def test_save_to_csv(self, csv_handler, sample_df):
         """Test saving DataFrame to CSV."""

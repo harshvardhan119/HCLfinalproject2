@@ -2,16 +2,6 @@
 🇮🇳 Indian Stock Market Dashboard
 ===================================
 A comprehensive stock market analysis dashboard built with Streamlit.
-
-Features:
-- Real-time stock data fetching via Alpha Vantage API
-- Interactive charts: Closing prices, Moving Averages, Volume Trends
-- Technical indicators: RSI, Bollinger Bands, EMA
-- CSV export and data management
-- Auto-update scheduler
-- Structured logging for API failures
-
-Author: Indian Stock Market Dashboard Project
 """
 
 import streamlit as st
@@ -980,7 +970,7 @@ else:
 st.markdown(
     """
     <div class="footer">
-        <strong>Indian Stock Market Dashboard</strong> — Built with ❤️ using Streamlit & Alpha Vantage<br>
+        <strong>NSE/BSE Indian Stock Market Dashboard</strong><br>
         Data provided by <a href="https://www.alphavantage.co/" target="_blank" style="color: #667eea;">Alpha Vantage</a> 
         | © 2024-2026
     </div>

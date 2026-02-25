@@ -1,6 +1,4 @@
-"""
-Unit tests for the Data Fetcher module.
-"""
+"""Tests for data fetching."""
 
 import pytest
 import pandas as pd
@@ -55,7 +53,6 @@ def mock_daily_response():
 
 
 class TestStockDataFetcher:
-    """Tests for the StockDataFetcher class."""
 
     @patch("src.data_fetcher.requests.Session.get")
     def test_fetch_daily_data_success(self, mock_get, fetcher, mock_daily_response):

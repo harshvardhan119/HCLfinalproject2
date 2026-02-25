@@ -1,6 +1,4 @@
-"""
-Unit tests for the Data Processor module.
-"""
+"""Tests for data processing."""
 
 import pytest
 import pandas as pd
@@ -44,7 +42,6 @@ def processor():
 
 
 class TestStockDataProcessor:
-    """Tests for the StockDataProcessor class."""
 
     def test_calculate_moving_averages_default(self, processor, sample_stock_data):
         """Test default moving average calculation."""

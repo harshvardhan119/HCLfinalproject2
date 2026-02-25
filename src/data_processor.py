@@ -1,7 +1,4 @@
-"""
-Data Processor module for the Indian Stock Market Dashboard.
-Handles data transformations: moving averages, technical indicators, etc.
-"""
+"""Technical analysis and data processing logic."""
 
 import pandas as pd
 from typing import List, Optional
@@ -11,7 +8,7 @@ from config import MA_SHORT, MA_MEDIUM, MA_LONG
 
 
 class StockDataProcessor:
-    """Processes stock data for analysis and visualization."""
+    """Market data processing core."""
 
     @staticmethod
     def calculate_moving_averages(
@@ -19,17 +16,7 @@ class StockDataProcessor:
         periods: Optional[List[int]] = None,
         column: str = "Close",
     ) -> pd.DataFrame:
-        """
-        Calculate Simple Moving Averages (SMA) for given periods.
-
-        Args:
-            df: DataFrame with stock data.
-            periods: List of MA periods. Defaults to [20, 50, 200].
-            column: Column to calculate MA on.
-
-        Returns:
-            DataFrame with added MA columns.
-        """
+        """Calculate Simple Moving Averages."""
         if df is None or df.empty:
             logger.warning("Empty DataFrame passed to calculate_moving_averages")
             return df
@@ -53,17 +40,7 @@ class StockDataProcessor:
         periods: Optional[List[int]] = None,
         column: str = "Close",
     ) -> pd.DataFrame:
-        """
-        Calculate Exponential Moving Averages (EMA).
-
-        Args:
-            df: DataFrame with stock data.
-            periods: List of EMA periods. Defaults to [12, 26].
-            column: Column to calculate EMA on.
-
-        Returns:
-            DataFrame with added EMA columns.
-        """
+        """Calculate Exponential Moving Averages."""
         if df is None or df.empty:
             logger.warning("Empty DataFrame passed to calculate_ema")
             return df
@@ -84,17 +61,7 @@ class StockDataProcessor:
     def calculate_rsi(
         df: pd.DataFrame, period: int = 14, column: str = "Close"
     ) -> pd.DataFrame:
-        """
-        Calculate Relative Strength Index (RSI).
-
-        Args:
-            df: DataFrame with stock data.
-            period: RSI lookback period.
-            column: Column to calculate RSI on.
-
-        Returns:
-            DataFrame with added RSI column.
-        """
+        """Calculate RSI indicator."""
         if df is None or df.empty:
             logger.warning("Empty DataFrame passed to calculate_rsi")
             return df
@@ -118,18 +85,7 @@ class StockDataProcessor:
     def calculate_bollinger_bands(
         df: pd.DataFrame, period: int = 20, std_dev: int = 2, column: str = "Close"
     ) -> pd.DataFrame:
-        """
-        Calculate Bollinger Bands.
-
-        Args:
-            df: DataFrame with stock data.
-            period: Lookback period.
-            std_dev: Number of standard deviations.
-            column: Column to use.
-
-        Returns:
-            DataFrame with Bollinger Bands columns.
-        """
+        """Calculate Bollinger Bands."""
         if df is None or df.empty:
             logger.warning("Empty DataFrame passed to calculate_bollinger_bands")
             return df
@@ -149,16 +105,7 @@ class StockDataProcessor:
     def calculate_daily_returns(
         df: pd.DataFrame, column: str = "Close"
     ) -> pd.DataFrame:
-        """
-        Calculate daily percentage returns.
-
-        Args:
-            df: DataFrame with stock data.
-            column: Column to calculate returns on.
-
-        Returns:
-            DataFrame with added Daily_Return column.
-        """
+        """Calculate daily price returns."""
         if df is None or df.empty:
             logger.warning("Empty DataFrame passed to calculate_daily_returns")
             return df
@@ -173,16 +120,7 @@ class StockDataProcessor:
     def calculate_volume_ma(
         df: pd.DataFrame, period: int = 20
     ) -> pd.DataFrame:
-        """
-        Calculate Volume Moving Average.
-
-        Args:
-            df: DataFrame with stock data.
-            period: Moving average period.
-
-        Returns:
-            DataFrame with added Volume_MA column.
-        """
+        """Calculate Volume MA."""
         if df is None or df.empty:
             logger.warning("Empty DataFrame passed to calculate_volume_ma")
             return df
@@ -195,15 +133,7 @@ class StockDataProcessor:
 
     @staticmethod
     def get_summary_statistics(df: pd.DataFrame) -> dict:
-        """
-        Calculate summary statistics for stock data.
-
-        Args:
-            df: DataFrame with stock data.
-
-        Returns:
-            Dictionary with summary statistics.
-        """
+        """Generate summary metrics."""
         if df is None or df.empty:
             return {}
 

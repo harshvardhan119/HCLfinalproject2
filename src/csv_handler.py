@@ -1,7 +1,4 @@
-"""
-CSV Handler module for the Indian Stock Market Dashboard.
-Handles saving and loading stock data to/from CSV files.
-"""
+"""CSV file operations for data persistence."""
 
 import os
 import pandas as pd
@@ -13,14 +10,14 @@ from src.logger import logger
 
 
 class CSVHandler:
-    """Handles CSV file operations for stock data persistence."""
+    """CSV persistence handler."""
 
     def __init__(self, data_dir: str = DATA_DIR):
         self.data_dir = data_dir
         os.makedirs(self.data_dir, exist_ok=True)
 
     def _get_filepath(self, symbol: str, suffix: str = "") -> str:
-        """Generate a standardized file path for a stock symbol."""
+        """Get file path for a symbol."""
         clean_symbol = symbol.replace(".", "_").replace("/", "_")
         filename = f"{clean_symbol}{suffix}.csv"
         return os.path.join(self.data_dir, filename)
@@ -28,17 +25,7 @@ class CSVHandler:
     def save_to_csv(
         self, df: pd.DataFrame, symbol: str, suffix: str = ""
     ) -> Optional[str]:
-        """
-        Save DataFrame to a CSV file.
-
-        Args:
-            df: DataFrame to save.
-            symbol: Stock symbol (used in filename).
-            suffix: Optional suffix for the filename.
-
-        Returns:
-            File path of saved CSV, or None if save fails.
-        """
+        """Save data to CSV."""
         if df is None or df.empty:
             logger.warning(f"No data to save for {symbol}")
             return None
@@ -56,16 +43,7 @@ class CSVHandler:
             return None
 
     def load_from_csv(self, symbol: str, suffix: str = "") -> Optional[pd.DataFrame]:
-        """
-        Load DataFrame from a CSV file.
-
-        Args:
-            symbol: Stock symbol (used to find file).
-            suffix: Optional suffix for the filename.
-
-        Returns:
-            DataFrame with stock data, or None if file not found.
-        """
+        """Load data from CSV."""
         filepath = self._get_filepath(symbol, suffix)
 
         if not os.path.exists(filepath):
@@ -83,12 +61,7 @@ class CSVHandler:
             return None
 
     def list_saved_files(self) -> list:
-        """
-        List all saved CSV files in the data directory.
-
-        Returns:
-            List of dictionaries with file info.
-        """
+        """List all CSV files."""
         files = []
         try:
             for filename in os.listdir(self.data_dir):
@@ -111,16 +84,7 @@ class CSVHandler:
         return files
 
     def delete_csv(self, symbol: str, suffix: str = "") -> bool:
-        """
-        Delete a saved CSV file.
-
-        Args:
-            symbol: Stock symbol.
-            suffix: Optional suffix.
-
-        Returns:
-            True if deleted, False otherwise.
-        """
+        """Delete a stock CSV."""
         filepath = self._get_filepath(symbol, suffix)
 
         if os.path.exists(filepath):
@@ -138,15 +102,6 @@ class CSVHandler:
     def export_with_timestamp(
         self, df: pd.DataFrame, symbol: str
     ) -> Optional[str]:
-        """
-        Export data with a timestamp suffix for archival.
-
-        Args:
-            df: DataFrame to export.
-            symbol: Stock symbol.
-
-        Returns:
-            File path of exported CSV.
-        """
+        """Export data with timestamp."""
         timestamp = datetime.now().strftime("_%Y%m%d_%H%M%S")
         return self.save_to_csv(df, symbol, suffix=timestamp)

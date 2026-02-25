@@ -1,7 +1,4 @@
-"""
-Scheduler module for auto-updating stock data.
-Uses APScheduler for periodic data refresh.
-"""
+"""Background data update scheduler."""
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
@@ -13,7 +10,7 @@ from config import AUTO_UPDATE_INTERVAL
 
 
 class StockScheduler:
-    """Manages scheduled updates for stock data."""
+    """Stock update scheduler."""
 
     def __init__(self):
         self.scheduler = BackgroundScheduler()
@@ -58,12 +55,7 @@ class StockScheduler:
         logger.info("Scheduler: Auto-update cycle complete")
 
     def start(self, interval_minutes: int = AUTO_UPDATE_INTERVAL):
-        """
-        Start the background scheduler.
-
-        Args:
-            interval_minutes: Update interval in minutes.
-        """
+        """Start the background scheduler."""
         if self._is_running:
             logger.warning("Scheduler is already running")
             return
